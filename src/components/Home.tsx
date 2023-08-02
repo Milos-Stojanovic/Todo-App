@@ -27,10 +27,6 @@ function Home() {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    function getStarted() {
-        navigate("/signIn");
-    }
-
     return(
         <Container style={mainPageWrapper}>
             <div className='d-flex flex-column align-items-center'>

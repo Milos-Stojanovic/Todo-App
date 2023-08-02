@@ -8,7 +8,7 @@ import Footer from './components/Footer';
 import { useCookies } from 'react-cookie';
 import supabase from './config/supabaseClient';
 import { Routes, Route, useNavigate } from 'react-router-dom';
-import Success from './components/Success';
+import Dashboard from './components/Dashboard';
 import Home from './components/Home';
 
 
@@ -52,7 +52,7 @@ function App() {
         <Header  user={user} setUser={setUser}/>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/success' element={<Success user={user} setUser={setUser} />} />
+          <Route path='/success' element={<Dashboard user={user} setUser={setUser} />} />
         </Routes>
         <Footer />
     </div>
