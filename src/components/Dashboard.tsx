@@ -17,7 +17,7 @@ function Dashboard({setUser}) {
     return (
       <div className="App">
         <div className="App-header">
-            Welcome, {user?.user_metadata?.name/*user?.email*/}
+            Welcome
         </div>
       </div>  
     );

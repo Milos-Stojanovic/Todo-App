@@ -3,7 +3,8 @@ import supabase from '../config/supabaseClient';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Button } from 'react-bootstrap';
+import { Button, Col, Container, Row, Anchor, Navbar } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -33,22 +34,30 @@ function Header({user, setUser}) {
 
     console.log(user)
     return (
-        <nav className="navbar navbar-expand-lg nav-bottom" style={headerWrapper}>
-            <div className="container-fluid mt-2 d-flex align-items-center">
-                <a className="navbar-brand text-white fs-1 pe-auto"  role="button" onClick={() => navigateHome()}>TaskTracker</a>
-                <ul> 
-                    {user?.email && 
-                        <Button variant='info' className="mt-3 me-3" onClick={signOut}>
-                            Sign Out
-                        </Button>
-                    }
-                    {!user?.email && 
-                        <Button variant='info' className="mt-3 me-3" onClick={handleShow}>
-                            Sign In
-                        </Button>
-                    }
-                </ul>
-            </div>
+        <Navbar style={headerWrapper}>
+            <Container fluid className='justify-content-between'>
+
+                <Navbar.Brand className="navbar-brand text-white fs-1"  role="button" onClick={() => navigateHome()}>TaskTracker</Navbar.Brand>
+
+                {user?.name &&
+                <>
+                <Navbar.Collapse className="justify-content-end">
+                    <Navbar.Text className='text-white me-2 mt-2'>
+                        {user.name}
+                    </Navbar.Text>
+                    <Button variant='info' className='mt-2 me-2' onClick={signOut}>
+                        Sign Out
+                    </Button>
+                </Navbar.Collapse>
+                </>
+                }
+                {!user?.name && 
+                    <Button variant='info' /*className="mt-2 me-2"*/ onClick={handleShow}>
+                        Sign In
+                    </Button>
+                }
+
+            </Container>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header className='text-white' closeButton style={{backgroundColor: "#3c4048"}}>
@@ -63,7 +72,7 @@ function Header({user, setUser}) {
                     />
                 </Modal.Body>
             </Modal>
-        </nav>
+        </Navbar>
         
   );
 }
