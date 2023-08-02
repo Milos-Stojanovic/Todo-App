@@ -10,12 +10,13 @@ import supabase from './config/supabaseClient';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
+import { User } from './models/User';
 
 
 function App() {
 
   const [cookies, setCookie, removeCookie] = useCookies(['list_groups_with_tasks']);
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
     supabase.auth.onAuthStateChange(async (event) => {
