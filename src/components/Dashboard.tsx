@@ -3,21 +3,21 @@ import supabase from "../config/supabaseClient";
 import { Auth } from "@supabase/auth-ui-react";
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { useEffect, useState } from "react";
-import { getUserData } from "../repositories/userRepository";
+import { useGetUserData } from "../repositories/userRepository";
 
-function Dashboard({user, setUser}) {
+function Dashboard({setUser}) {
     
     const navigate = useNavigate();
-
+    const user = useGetUserData();
+  
     useEffect(() => {
-        setUser(getUserData());
-        console.log(user);
-    }, [])
-
+      setUser(user);
+    }, [user])
+    
     return (
       <div className="App">
         <div className="App-header">
-            Success
+            Welcome, {user?.user_metadata?.name/*user?.email*/}
         </div>
       </div>  
     );

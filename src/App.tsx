@@ -52,7 +52,7 @@ function App() {
         <Header  user={user} setUser={setUser}/>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/success' element={<Dashboard user={user} setUser={setUser} />} />
+          <Route path='/success' element={<Dashboard setUser={setUser} />} />
         </Routes>
         <Footer />
     </div>

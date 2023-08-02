@@ -31,7 +31,7 @@ function Header({user, setUser}) {
         navigate("/");
     }
 
-
+    console.log(user)
     return (
         <nav className="navbar navbar-expand-lg nav-bottom" style={headerWrapper}>
             <div className="container-fluid mt-2 d-flex align-items-center">
